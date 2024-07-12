@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSBD's Value Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>SSBD's Value Graph</h1>
+    <canvas id="ssbdChart" width="600" height="400"></canvas>
+
+    <script>
+        // Get the canvas element
+        const ctx = document.getElementById('ssbdChart').getContext('2d');
+
+        // Define the data points
+        const data = {
+            labels: ['Point 1', 'Point 2', 'Point 3', 'Point 4', 'Point 5', 'Point 6'],
+            datasets: [{
+                label: "SSBD's Value",
+                data: [133, 134, 102, 133, 134, 102],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                fill: false,
+                tension: 0.4 // This makes the line wave-like
+            }]
+        };
+
+        // Configure the chart
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: "SSBD's Value over Time"
+                    }
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Points'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Value'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const ssbdChart = new Chart(ctx, config);
+    </script>
+</body>
+</html>
